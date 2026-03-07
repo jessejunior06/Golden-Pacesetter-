@@ -1,0 +1,181 @@
+:root {
+    --bg-color: #0a0a0c;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --ferrari: #E8002D;
+    --redbull: #0600EF;
+    --mclaren: #FF8000;
+    --mercedes: #00D2BE;
+    --aston: #006F62;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle at 50% 0%, #1a1a24 0%, #0a0a0c 70%);
+    color: var(--text-main);
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .nickname {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+}
+
+header {
+    text-align: center;
+    padding: 3rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header h1 {
+    font-size: 3rem;
+    margin: 0;
+    background: linear-gradient(90deg, #ff0000, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+/*GRID LAYOUT*/
+.paddock-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+    padding: 4rem 10%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/*CARD STYLES*/
+.driver-card {
+    background-color: transparent;
+    height: 450px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+.driver-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: box-shadow 0.3s ease;
+}
+
+.driver-card:hover .card-front {
+    box-shadow: 0 0 30px var(--glow-color);
+}
+
+/*Front of Card*/
+.card-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.card-front img {
+    width: 240px;
+    height: 220px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+    border: 3px solid var(--glow-color);
+    margin-bottom: 15px;
+    display: block;
+    filter: grayscale(20%);
+    transition: filter 0.3s ease;
+}
+
+.driver-card:hover .card-front img {
+    filter: grayscale(0%);
+}
+
+.card-front h2 {
+    margin: 15px 0 5px 0;
+    font-size: 1.8rem;
+}
+
+.nickname {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.team-badge {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/*Back of Card*/
+.card-back {
+    transform: rotateY(180deg);
+    background: rgba(20, 20, 25, 0.95);
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+.card-back h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--glow-color);
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+.card-back p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 5px;
+}
