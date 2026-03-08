@@ -152,15 +152,17 @@ header p {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
+    gap: 8px;
+    margin-top: 15px;
 }
 
 .team-logo {
     width: 30px;
     height: 30px;
-    object-fit: contain;
-    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    flex-shrink: 0;
 }
 
 /*Back of Card*/

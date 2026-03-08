@@ -66,7 +66,7 @@ drivers.forEach(driver => {
                         <p class="nickname">${driver.nickname}</p>
                         
                         <div class="team-container">
-                            <img src="${driver.logo}" class="team-logo" alt="${driver.team} logo">
+                            <div class="logo-icon" style="background-image: url('${driver.logo}');"></div>
                             <span class="team-badge" style="border: 1px solid ${driver.color}; color: ${driver.color};">
                                 ${driver.team}
                             </span>
