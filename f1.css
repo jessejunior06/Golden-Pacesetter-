@@ -156,6 +156,12 @@ header p {
     margin-top: 10px;
 }
 
+.team-logo {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
 /*Back of Card*/
 .card-back {
     transform: rotateY(180deg);
