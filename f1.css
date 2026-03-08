@@ -160,6 +160,7 @@ header p {
     width: 30px;
     height: 30px;
     object-fit: contain;
+    display: inline-block;
 }
 
 /*Back of Card*/

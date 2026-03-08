@@ -7,7 +7,7 @@ const drivers = [
         image: "hamilton.jpeg",
         fact: "Lewis is a partial owner of the Denver Broncos NFL team and has a vegan bulldog named Roscoe.",
         color: "var(--ferrari)",
-        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c0/Scuderia_Ferrari_logo.svg/1200px-Scuderia_Ferrari_logo.svg.png"
+        logo: "https://logo.clearbit.com/ferrari.png?size=400x400"
     },
     {
         name: "Max Verstappen",
@@ -17,7 +17,7 @@ const drivers = [
         image: "max.jpeg",
         fact: "He won his very first F1 race for Red Bull at the 2016 Spanish Grand Prix at just 18 years old.",
         color: "var(--redbull)",
-        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/Red_Bull_Racing_Logo.svg/1200px-Red_Bull_Racing_Logo.svg.png"
+        logo: "https://logo.clearbit.com/redbullracing.png?size=400x400"
     },
     {
         name: "Lando Norris",
@@ -27,7 +27,7 @@ const drivers = [
         image: "lando.jpeg",
         fact: "Lando is a massive gamer and founded his own successful esports and lifestyle brand called Quadrant.",
         color: "var(--mclaren)",
-        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/McLaren_Racing_Logo.svg/1200px-McLaren_Racing_Logo.svg.png"
+        logo: "https://logo.clearbit.com/mclaren.png?size=400x400   "
     },
     {
         name: "George Russell",
@@ -37,7 +37,7 @@ const drivers = [
         image: "george.jpeg",
         fact: "He famously created a PowerPoint presentation when he was a teenager to convince Toto Wolff to sign him.",
         color: "var(--mercedes)",
-        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/Mercedes-AMG-Formula-1-Team-Logo.svg/1200px-Mercedes-AMG-Formula-1-Team-Logo.svg.png"
+        logo: "https://logo.clearbit.com/mercedes.png?size=400x400"
     },
     {
         name: "Charles Leclerc",
@@ -47,7 +47,7 @@ const drivers = [
         image: "charles.jpeg",
         fact: "Charles is known for his incredible qualifying pace and has a strong connection to his home country of Monaco.",
         color: "var(--ferrari)",
-        logo: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c0/Scuderia_Ferrari_logo.svg/1200px-Scuderia_Ferrari_logo.svg.png"
+        logo: "https://logo.clearbit.com/ferrari.png?size=400x400"
     }
 ];
 
