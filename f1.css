@@ -63,6 +63,8 @@ header p {
     height: 450px;
     perspective: 1000px;
     cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .card-inner {
