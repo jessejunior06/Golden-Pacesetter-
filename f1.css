@@ -198,3 +198,28 @@ header p {
     display: block;
     margin-bottom: 5px;
 }
+
+/*Search Bar*/
+.search-container {
+    text-align: center;
+    margin: 20px 0 40px 0;
+}
+
+#search-bar {
+    padding: 12px 25px;
+    width: 80%;
+    max-width: 450px;
+    border-radius: 30px;
+    border: 2px solid #333;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#search-bar:focus {
+    border-color: #ff1801; /* F1 Red glow */
+    box-shadow: 0 0 15px rgba(255, 24, 1, 0.4);
+}

@@ -53,40 +53,61 @@ const drivers = [
 
 
 const gridContainer = document.getElementById('paddock-grid');
+const searchBar = document.getElementById('search-bar');
 
-drivers.forEach(driver => {
-    const cardHTML = `
-        <div class="driver-card" style="--glow-color: ${driver.color};">
-            <div class="card-inner">
-                
-                <div class="card-front">
-                    <img src="${driver.image}" alt="${driver.name}">
-                    <div class="info">
-                        <h2>${driver.name}</h2>
-                        <p class="nickname">${driver.nickname}</p>
-                        
-                        <div class="team-container">
-                            <div class="logo-icon" style="background-image: url('${driver.logo}');"></div>
-                            <span class="team-badge" style="border: 1px solid ${driver.color}; color: ${driver.color};">
-                                ${driver.team}
-                            </span>
+// 1. Wrap your card creation in a reusable function
+function renderDrivers(driversToDisplay) {
+    // CRITICAL: Clear the grid before adding cards, otherwise they duplicate!
+    gridContainer.innerHTML = ''; 
+
+    // If a search doesn't match anything, show a message
+    if (driversToDisplay.length === 0) {
+        gridContainer.innerHTML = '<p style="color: white; text-align: center; width: 100%; font-family: Orbitron;">No drivers found in the paddock.</p>';
+        return;
+    }
+
+    // Loop through the filtered list and build the cards
+    driversToDisplay.forEach(driver => {
+        const cardHTML = `
+            <div class="driver-card" style="--glow-color: ${driver.color};">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="${driver.image}" alt="${driver.name}">
+                        <div class="info">
+                            <h2>${driver.name}</h2>
+                            <p class="nickname">${driver.nickname}</p>
+                            <span class="team-badge" style="border: 1px solid ${driver.color}; color: ${driver.color};">${driver.team}</span>
+                        </div>
+                    </div>
+                    <div class="card-back" style="border: 1px solid ${driver.color};">
+                        <h3>Did You Know?</h3>
+                        <p>${driver.fact}</p>
+                        <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                            <span class="stat-label">Team Principal</span>
+                            <strong>${driver.principal}</strong>
                         </div>
                     </div>
                 </div>
-
-                <div class="card-back" style="border: 1px solid ${driver.color};">
-                    <h3>Did You Know?</h3>
-                    <p>${driver.fact}</p>
-                    
-                    <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-                        <span class="stat-label">Team Principal</span>
-                        <strong>${driver.principal}</strong>
-                    </div>
-                </div>
-
             </div>
-        </div>
-    `;
+        `;
+        gridContainer.innerHTML += cardHTML;
+    });
+}
+
+// 2. Load all drivers when the page first opens
+renderDrivers(drivers);
+
+// 3. Listen for typing in the search bar
+searchBar.addEventListener('input', (e) => {
+    // Get what the user typed and make it lowercase
+    const searchString = e.target.value.toLowerCase();
     
-    gridContainer.innerHTML += cardHTML;
+    // Filter the array based on name or team
+    const filteredDrivers = drivers.filter(driver => {
+        return driver.name.toLowerCase().includes(searchString) || 
+               driver.team.toLowerCase().includes(searchString);
+    });
+    
+    // Re-draw the grid with only the matching drivers
+    renderDrivers(filteredDrivers);
 });
