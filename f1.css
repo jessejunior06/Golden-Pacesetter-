@@ -168,11 +168,23 @@ header p {
 }
 
 /* Team Logo Styling */
+.team-badge {
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 25px; /* This makes it a pill shape, not a rectangle */
+    font-weight: bold;
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.1);
+}
+
 .team-logo {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;    /* This makes the logo a circle */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: white; 
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 70%;  
     background-position: center;
     flex-shrink: 0;
 }
