@@ -27,7 +27,7 @@ const drivers = [
         image: "lando.jpeg",
         fact: "Lando is a massive gamer and founded his own successful esports and lifestyle brand called Quadrant.",
         color: "var(--mclaren)",
-        logo: "https://logo.clearbit.com/mclaren.png?size=400x400   "
+        logo: "https://logo.clearbit.com/mclaren.png?size=400x400"
     },
     {
         name: "George Russell",
@@ -51,25 +51,51 @@ const drivers = [
     }
 ];
 
-
 const gridContainer = document.getElementById('paddock-grid');
 const searchBar = document.getElementById('search-bar');
 
+// --- NEW: 3D Tilt Logic ---
+function applyTiltEffect() {
+    const cards = document.querySelectorAll('.driver-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const cardInner = card.querySelector('.card-inner');
+            const rect = card.getBoundingClientRect();
+            
+            // Calculate coordinates relative to the card center
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Spatial transformation for 3D rotation
+            const rotateX = (centerY - y) / 15; 
+            const rotateY = (x - centerX) / 15;
+
+            cardInner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            const cardInner = card.querySelector('.card-inner');
+            cardInner.style.transform = `rotateX(0deg) rotateY(0deg)`;
+        });
+    });
+}
+
 // 1. Wrap your card creation in a reusable function
 function renderDrivers(driversToDisplay) {
-    // CRITICAL: Clear the grid before adding cards, otherwise they duplicate!
     gridContainer.innerHTML = ''; 
 
-    // If a search doesn't match anything, show a message
     if (driversToDisplay.length === 0) {
         gridContainer.innerHTML = '<p style="color: white; text-align: center; width: 100%; font-family: Orbitron;">No drivers found in the paddock.</p>';
         return;
     }
 
-    // Loop through the filtered list and build the cards
-    driversToDisplay.forEach(driver => {
+    // UPDATED: Added 'index' to create staggered animation delays
+    driversToDisplay.forEach((driver, index) => {
         const cardHTML = `
-            <div class="driver-card" style="--glow-color: ${driver.color};">
+            <div class="driver-card" style="--glow-color: ${driver.color}; animation-delay: ${index * 0.1}s;">
                 <div class="card-inner">
                     <div class="card-front">
                         <img src="${driver.image}" alt="${driver.name}">
@@ -92,22 +118,20 @@ function renderDrivers(driversToDisplay) {
         `;
         gridContainer.innerHTML += cardHTML;
     });
+
+    // RE-APPLY Tilt whenever the grid is redrawn
+    applyTiltEffect();
 }
 
-// 2. Load all drivers when the page first opens
+// 2. Load initial drivers
 renderDrivers(drivers);
 
-// 3. Listen for typing in the search bar
+// 3. Search Bar listener
 searchBar.addEventListener('input', (e) => {
-    // Get what the user typed and make it lowercase
     const searchString = e.target.value.toLowerCase();
-    
-    // Filter the array based on name or team
     const filteredDrivers = drivers.filter(driver => {
         return driver.name.toLowerCase().includes(searchString) || 
                driver.team.toLowerCase().includes(searchString);
     });
-    
-    // Re-draw the grid with only the matching drivers
     renderDrivers(filteredDrivers);
 });
