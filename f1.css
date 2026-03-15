@@ -143,35 +143,59 @@ header p {
     font-size: 1.6rem;
 }
 
-/* Added to handle the grouping layout */
+/* --- UPDATED TEAM BADGE SYSTEM --- */
+
+/* This container holds both the logo and the name */
 .team-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     margin-top: 15px;
-    width: 100%;
+    background: rgba(255, 255, 255, 0.05); /* Subtle dark background */
+    padding: 4px 15px 4px 4px; /* Tight on the left to hug the logo */
+    border-radius: 30px; /* Makes the whole thing a pill shape */
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
 }
 
+/* Forces the logo to be small and circular */
 .team-logo {
-    width: 45px;
-    height: 45px;
+    width: 28px;  /* Icon size */
+    height: 28px; /* Icon size */
     border-radius: 50%;
-    object-fit: contain; /* Ensures local logos don't stretch */
-    background: white; /* Contrast for local logos */
-    padding: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    display: block;
+    object-fit: contain; /* Prevents logo distortion */
+    background-color: white; /* Ensures logos with transparency look clean */
+    padding: 3px;
     flex-shrink: 0;
+    display: block;
 }
 
+/* Stylized team name */
 .team-badge {
-    padding: 6px 16px;
-    border-radius: 25px;
+    color: var(--text-main);
     font-weight: 700;
     font-size: 0.8rem;
-    background: rgba(255, 255, 255, 0.05);
-    white-space: nowrap; /* Prevents team name from jumping to two lines */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Driver Name Adjustment */
+.info h2 {
+    margin: 15px 0 5px 0;
+    font-size: 1.5rem;
+    line-height: 1.2;
+}
+
+/* Nickname Adjustment */
+.nickname {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
 }
 
 /* --- BACK OF CARD --- */
