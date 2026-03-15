@@ -73,11 +73,11 @@ const drivers = [
     {
         name: "Lando Norris",
         nickname: "LN4",
-        number: 4,
+        number: 1,
         flag: "🇬🇧",
         teamKey: "mclaren",
         image: "lando.jpeg",
-        fact: "Lando races for McLaren alongside Oscar Piastri in the 2026 F1 season."
+        fact: "Lando Norris entered 2026 as the reigning World Champion and switched from #4 to #1."
     },
     {
         name: "Oscar Piastri",
@@ -257,7 +257,7 @@ const drivers = [
         flag: "🇲🇽",
         teamKey: "cadillac",
         image: "sergio.jpeg",
-        fact: "Sergio Perez races for Cadillac in the team's debut Formula 1 season."
+        fact: "Sergio Pérez races for Cadillac in the team's debut Formula 1 season."
     },
     {
         name: "Valtteri Bottas",
