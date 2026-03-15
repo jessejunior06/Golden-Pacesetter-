@@ -384,3 +384,18 @@ searchBar.addEventListener('input', (e) => {
 
 // --- INITIAL RENDER ---
 renderDrivers(drivers);
+
+const gridBtn = document.getElementById('grid-view');
+const listBtn = document.getElementById('list-view');
+
+gridBtn.addEventListener('click', () => {
+    gridContainer.classList.remove('list-mode');
+    gridBtn.classList.add('active');
+    listBtn.classList.remove('active');
+});
+
+listBtn.addEventListener('click', () => {
+    gridContainer.classList.add('list-mode');
+    listBtn.classList.add('active');
+    gridBtn.classList.remove('active');
+});

@@ -278,3 +278,79 @@ header p {
         height: 440px;
     }
 }
+
+/* --- VIEW TOGGLE BUTTONS --- */
+.view-toggle {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.view-toggle button {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: var(--text-muted);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.view-toggle button.active {
+    background: var(--text-main);
+    color: #000;
+    border-color: var(--text-main);
+}
+
+/* --- LIST VIEW OVERRIDE --- */
+/* When this class is active, we strip the 3D flip and make cards flat rows */
+.paddock-container.list-mode {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 2rem 15%;
+}
+
+.list-mode .driver-card {
+    height: 80px; /* Slim row height */
+    opacity: 1;
+    animation: none;
+}
+
+.list-mode .card-inner {
+    transition: none;
+    transform: none !important; /* Kill the 3D flip */
+}
+
+.list-mode .card-back {
+    display: none; /* Hide the back in list mode */
+}
+
+.list-mode .card-front {
+    flex-direction: row; /* Align items horizontally */
+    justify-content: space-between;
+    padding: 0 2rem;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.list-mode .card-front img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0;
+    box-shadow: 0 0 10px var(--glow-color);
+}
+
+.list-mode .info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    margin-left: 20px;
+}
+
+.list-mode .info h2 { font-size: 1.1rem; margin: 0; min-width: 200px; text-align: left; }
+.list-mode .nickname, .list-mode .card-header { display: none; } /* Hide extra clutter */
