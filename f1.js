@@ -175,7 +175,7 @@ const drivers = [
         number: 17,
         flag: "🇬🇧",
         teamKey: "racingbulls",
-        image: "arvid.jpeg",
+        image: "arvid.jpeg", // <--- Double check this filename!
         fact: "Arvid Lindblad joins Racing Bulls as one of the exciting rookies on the 2026 grid."
     },
     {
