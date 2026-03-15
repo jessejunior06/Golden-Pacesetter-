@@ -279,29 +279,47 @@ header p {
     }
 }
 
-/* --- VIEW TOGGLE BUTTONS --- */
+/* --- SLEEK VIEW TOGGLE --- */
 .view-toggle {
-    margin-top: 15px;
+    margin-top: 25px;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 0; /* Joined buttons look cleaner */
 }
 
 .view-toggle button {
-    background: #1a1a1a;
-    border: 1px solid #333;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--text-muted);
-    padding: 8px 16px;
-    border-radius: 20px;
+    padding: 10px 24px;
     cursor: pointer;
     font-family: 'Orbitron', sans-serif;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
     transition: all 0.3s ease;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+/* Rounded corners only on the outer edges */
+.view-toggle button:first-child {
+    border-radius: 20px 0 0 20px;
+}
+
+.view-toggle button:last-child {
+    border-radius: 0 20px 20px 0;
+    border-left: none; /* Avoid double border in the middle */
+}
+
+.view-toggle button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
 }
 
 .view-toggle button.active {
     background: var(--text-main);
     color: #000;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
     border-color: var(--text-main);
 }
 
