@@ -273,6 +273,35 @@ const drivers = [
 const gridContainer = document.getElementById('paddock-grid');
 const searchBar = document.getElementById('search-bar');
 
+// --- THE ENGINE: TILT EFFECT LOGIC ---
+function applyTiltEffect() {
+    const cards = document.querySelectorAll('.driver-card');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const cardInner = card.querySelector('.card-inner');
+            const rect = card.getBoundingClientRect();
+            
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Adjust tilt intensity here
+            const rotateX = (centerY - y) / 15; 
+            const rotateY = (x - centerX) / 15;
+
+            // Maintain the 180deg flip while adding the tilt offset
+            cardInner.style.transform = `rotateY(180deg) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            const cardInner = card.querySelector('.card-inner');
+            // Return to neutral state
+            cardInner.style.transform = `rotateY(0deg) rotateX(0deg) rotateY(0deg)`;
+        });
+    });
+}
+
 // --- THE ENGINE: RENDERING LOGIC ---
 function renderDrivers(driversToDisplay) {
     gridContainer.innerHTML = '';
@@ -332,6 +361,7 @@ function renderDrivers(driversToDisplay) {
         `;
     }).join('');
 
+    // Re-initialize tilt effect for the newly created DOM elements
     applyTiltEffect();
 }
 
