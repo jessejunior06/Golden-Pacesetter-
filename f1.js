@@ -7,7 +7,7 @@ const drivers = [
         image: "hamilton.jpeg",
         fact: "Lewis is a partial owner of the Denver Broncos NFL team and has a vegan bulldog named Roscoe.",
         color: "var(--ferrari)",
-        logo: "ferrarilogo.png" // Update this to your local filename
+        logo: "ferrari-logo.png" // Update this to your local filename
     },
     {
         name: "Charles Leclerc",
@@ -17,7 +17,7 @@ const drivers = [
         image: "charles.jpeg",
         fact: "Charles is known for his incredible qualifying pace and has a strong connection to his home country of Monaco.",
         color: "var(--ferrari)",
-        logo: "ferrarilogo.png" // Update this to your local filename
+        logo: "ferrari-logo.png" // Update this to your local filename
     },
     {
         name: "Max Verstappen",
@@ -37,7 +37,7 @@ const drivers = [
         image: "lando.jpeg",
         fact: "Lando is a massive gamer and founded his own successful esports and lifestyle brand called Quadrant.",
         color: "var(--mclaren)",
-        logo: "mclarenlogo.jpeg" // Update this to your local filename
+        logo: "mclaren-logo.jpeg" // Update this to your local filename
     },
     {
         name: "George Russell",
@@ -47,7 +47,7 @@ const drivers = [
         image: "george.jpeg",
         fact: "He famously created a PowerPoint presentation when he was a teenager to convince Toto Wolff to sign him.",
         color: "var(--mercedes)",
-        logo: "benzlogo.jpeg" // Update this to your local filename
+        logo: "benz-logo.jpeg" // Update this to your local filename
     }
 ];
 

@@ -92,9 +92,10 @@ header p {
     background-color: transparent;
     height: 480px; /* Increased slightly to prevent overflow */
     perspective: 1000px;
-    cursor: pointer;
+    cursor: default;
     -webkit-user-select: none;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
     opacity: 0; 
     animation: fadeInUp 0.6s ease-out forwards;
 }
@@ -153,13 +154,14 @@ header p {
 }
 
 .team-logo {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     object-fit: contain; /* Ensures local logos don't stretch */
     background: white; /* Contrast for local logos */
-    padding: 4px;
+    padding: 5px;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    display: block;
     flex-shrink: 0;
 }
 
