@@ -143,50 +143,46 @@ header p {
     font-size: 1.6rem;
 }
 
-/* --- UPDATED TEAM BADGE SYSTEM --- */
-
-/* --- ICON-STYLE TEAM BADGES --- */
-
-/* The outer pill: Strictly limited height so it doesn't grow */
+/* The container for the badge */
 .team-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    margin-top: 12px;
-    background: rgba(255, 255, 255, 0.08); /* Subtle dark gray-ish bg */
-    padding: 4px 12px 4px 4px; /* Tight padding to hug the small logo */
-    border-radius: 20px;
+    gap: 10px;
+    margin-top: 15px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 5px 15px 5px 5px;
+    border-radius: 30px;
     width: fit-content;
-    height: 32px; /* Fixed height to keep it small */
     margin-left: auto;
     margin-right: auto;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-sizing: border-box;
 }
 
-/* The tiny circular logo icon */
-.team-logo {
-    width: 24px;  /* Small icon size */
-    height: 24px; /* Small icon size */
+/* The New Icon Alternative */
+.team-logo-icon {
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    object-fit: contain; /* Ensures logo fits inside the circle without stretching */
-    background-color: white; 
-    padding: 3px;
+    background-color: white;
+    
+    /* These three lines are the "Magic" fix: */
+    background-size: contain;     /* Forces the full logo to fit inside */
+    background-position: center;  /* Centers the logo */
+    background-repeat: no-repeat; /* Prevents the logo from tiling */
+    
+    border: 1px solid rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
-    display: block;
 }
 
-/* The brand name text */
 .team-badge {
-    color: var(--text-main);
-    font-weight: 700;
-    font-size: 0.75rem; /* Small, sharp text */
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
     font-family: 'Orbitron', sans-serif;
-    white-space: nowrap; /* Prevents text wrapping */
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-main);
 }
+
 /* Driver Name Adjustment */
 .info h2 {
     margin: 15px 0 5px 0;

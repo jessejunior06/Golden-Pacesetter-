@@ -48,6 +48,36 @@ const drivers = [
         fact: "He famously created a PowerPoint presentation when he was a teenager to convince Toto Wolff to sign him.",
         color: "var(--mercedes)",
         logo: "benz-logo.jpeg" // Update this to your local filename
+    },
+    {
+        name: "Sergio Pérez",
+        nickname: "\"Checo\"",
+        team: "Red Bull Racing",
+        principal: "Christian Horner",
+        image: "perez.jpeg",
+        fact: "Sergio is the first Mexican driver to win a Formula 1 race, achieving this milestone at the 2020 Sakhir Grand Prix.",
+        color: "var(--redbull)",
+        logo: "redbull-logo.png" // Update this to your local filename
+    },
+    {
+        name: "Carlos Sainz",
+        nickname: "\"The Spanish Bull\"", 
+        team: "Ferrari",
+        principal: "Frédéric Vasseur",
+        image: "sainz.jpeg",
+        fact: "Carlos is the son of former World Rally Champion Carlos Sainz Sr., making him a second-generation racing driver.",
+        color: "var(--ferrari)",
+        logo: "ferrari-logo.png" // Update this to your local filename      
+    },
+    {
+        name: "Lance Stroll",   
+        nickname: "\"The Canadian Rookie\"",
+        team: "Aston Martin",
+        principal: "Mike Krack",
+        image: "lance.jpeg",
+        fact: "Lance is the son of billionaire Lawrence Stroll, who owns the Aston Martin F1 team.",
+        color: "var(--astonmartin)",
+        logo: "astonmartin-logo.png" // Update this to your local filename
     }
 ];
 
@@ -104,8 +134,9 @@ function renderDrivers(driversToDisplay) {
                             <h2>${driver.name}</h2>
                             <p class="nickname">${driver.nickname}</p>
                             
+                           // Replace the old <img> tag with this:
                             <div class="team-container">
-                                <img src="${driver.logo}" class="team-logo" alt="logo">
+                                <div class="team-logo-icon" style="background-image: url('${driver.logo}');"></div>
                                 <span class="team-badge">${driver.team}</span>
                             </div>
                         </div>
