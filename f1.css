@@ -145,45 +145,48 @@ header p {
 
 /* --- UPDATED TEAM BADGE SYSTEM --- */
 
-/* This container holds both the logo and the name */
+/* --- ICON-STYLE TEAM BADGES --- */
+
+/* The outer pill: Strictly limited height so it doesn't grow */
 .team-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin-top: 15px;
-    background: rgba(255, 255, 255, 0.05); /* Subtle dark background */
-    padding: 4px 15px 4px 4px; /* Tight on the left to hug the logo */
-    border-radius: 30px; /* Makes the whole thing a pill shape */
+    gap: 8px;
+    margin-top: 12px;
+    background: rgba(255, 255, 255, 0.08); /* Subtle dark gray-ish bg */
+    padding: 4px 12px 4px 4px; /* Tight padding to hug the small logo */
+    border-radius: 20px;
     width: fit-content;
+    height: 32px; /* Fixed height to keep it small */
     margin-left: auto;
     margin-right: auto;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
-/* Forces the logo to be small and circular */
+/* The tiny circular logo icon */
 .team-logo {
-    width: 28px;  /* Icon size */
-    height: 28px; /* Icon size */
+    width: 24px;  /* Small icon size */
+    height: 24px; /* Small icon size */
     border-radius: 50%;
-    object-fit: contain; /* Prevents logo distortion */
-    background-color: white; /* Ensures logos with transparency look clean */
+    object-fit: contain; /* Ensures logo fits inside the circle without stretching */
+    background-color: white; 
     padding: 3px;
     flex-shrink: 0;
     display: block;
 }
 
-/* Stylized team name */
+/* The brand name text */
 .team-badge {
     color: var(--text-main);
     font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
+    font-size: 0.75rem; /* Small, sharp text */
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     font-family: 'Orbitron', sans-serif;
+    white-space: nowrap; /* Prevents text wrapping */
 }
-
 /* Driver Name Adjustment */
 .info h2 {
     margin: 15px 0 5px 0;
