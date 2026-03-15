@@ -7,37 +7,7 @@ const drivers = [
         image: "hamilton.jpeg",
         fact: "Lewis is a partial owner of the Denver Broncos NFL team and has a vegan bulldog named Roscoe.",
         color: "var(--ferrari)",
-        logo: "https://logo.clearbit.com/ferrari.png?size=400x400"
-    },
-    {
-        name: "Max Verstappen",
-        nickname: "\"Super Max\"",
-        team: "Red Bull Racing",
-        principal: "Christian Horner",
-        image: "max.jpeg",
-        fact: "He won his very first F1 race for Red Bull at the 2016 Spanish Grand Prix at just 18 years old.",
-        color: "var(--redbull)",
-        logo: "https://logo.clearbit.com/redbullracing.png?size=400x400"
-    },
-    {
-        name: "Lando Norris",
-        nickname: "\"Last Lap Lando\"",
-        team: "McLaren",
-        principal: "Andrea Stella",
-        image: "lando.jpeg",
-        fact: "Lando is a massive gamer and founded his own successful esports and lifestyle brand called Quadrant.",
-        color: "var(--mclaren)",
-        logo: "https://logo.clearbit.com/mclaren.png?size=400x400"
-    },
-    {
-        name: "George Russell",
-        nickname: "\"Mr. Consistency\"",
-        team: "Mercedes",
-        principal: "Toto Wolff",
-        image: "george.jpeg",
-        fact: "He famously created a PowerPoint presentation when he was a teenager to convince Toto Wolff to sign him.",
-        color: "var(--mercedes)",
-        logo: "https://logo.clearbit.com/mercedes.png?size=400x400"
+        logo: "ferrari-logo.png" // Update this to your local filename
     },
     {
         name: "Charles Leclerc",
@@ -47,14 +17,44 @@ const drivers = [
         image: "charles.jpeg",
         fact: "Charles is known for his incredible qualifying pace and has a strong connection to his home country of Monaco.",
         color: "var(--ferrari)",
-        logo: "https://logo.clearbit.com/ferrari.png?size=400x400"
+        logo: "ferrari-logo.png" // Update this to your local filename
+    },
+    {
+        name: "Max Verstappen",
+        nickname: "\"Super Max\"",
+        team: "Red Bull Racing",
+        principal: "Christian Horner",
+        image: "max.jpeg",
+        fact: "He won his very first F1 race for Red Bull at the 2016 Spanish Grand Prix at just 18 years old.",
+        color: "var(--redbull)",
+        logo: "redbull-logo.png" // Update this to your local filename
+    },
+    {
+        name: "Lando Norris",
+        nickname: "\"Last Lap Lando\"",
+        team: "McLaren",
+        principal: "Andrea Stella",
+        image: "lando.jpeg",
+        fact: "Lando is a massive gamer and founded his own successful esports and lifestyle brand called Quadrant.",
+        color: "var(--mclaren)",
+        logo: "mclaren-logo.png" // Update this to your local filename
+    },
+    {
+        name: "George Russell",
+        nickname: "\"Mr. Consistency\"",
+        team: "Mercedes",
+        principal: "Toto Wolff",
+        image: "george.jpeg",
+        fact: "He famously created a PowerPoint presentation when he was a teenager to convince Toto Wolff to sign him.",
+        color: "var(--mercedes)",
+        logo: "mercedes-logo.png" // Update this to your local filename
     }
 ];
 
 const gridContainer = document.getElementById('paddock-grid');
 const searchBar = document.getElementById('search-bar');
 
-// --- NEW: 3D Tilt Logic ---
+// --- 3D Tilt Logic (Fixed to allow flipping) ---
 function applyTiltEffect() {
     const cards = document.querySelectorAll('.driver-card');
 
@@ -63,27 +63,26 @@ function applyTiltEffect() {
             const cardInner = card.querySelector('.card-inner');
             const rect = card.getBoundingClientRect();
             
-            // Calculate coordinates relative to the card center
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             
-            // Spatial transformation for 3D rotation
-            const rotateX = (centerY - y) / 15; 
-            const rotateY = (x - centerX) / 15;
+            const rotateX = (centerY - y) / 20; 
+            const rotateY = (x - centerX) / 20;
 
-            cardInner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            // This allows the card to keep its hover-flip (180deg) while tilting
+            cardInner.style.transform = `rotateY(180deg) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
 
         card.addEventListener('mouseleave', () => {
             const cardInner = card.querySelector('.card-inner');
-            cardInner.style.transform = `rotateX(0deg) rotateY(0deg)`;
+            cardInner.style.transform = `rotateY(0deg) rotateX(0deg) rotateY(0deg)`;
         });
     });
 }
 
-// 1. Wrap your card creation in a reusable function
+// 1. Reusable function to sort and render
 function renderDrivers(driversToDisplay) {
     gridContainer.innerHTML = ''; 
 
@@ -92,8 +91,10 @@ function renderDrivers(driversToDisplay) {
         return;
     }
 
-    // UPDATED: Added 'index' to create staggered animation delays
-    driversToDisplay.forEach((driver, index) => {
+    // --- SORTING LOGIC: Group by Team Name ---
+    const groupedDrivers = [...driversToDisplay].sort((a, b) => a.team.localeCompare(b.team));
+
+    groupedDrivers.forEach((driver, index) => {
         const cardHTML = `
             <div class="driver-card" style="--glow-color: ${driver.color}; animation-delay: ${index * 0.1}s;">
                 <div class="card-inner">
@@ -102,13 +103,19 @@ function renderDrivers(driversToDisplay) {
                         <div class="info">
                             <h2>${driver.name}</h2>
                             <p class="nickname">${driver.nickname}</p>
-                            <span class="team-badge" style="border: 1px solid ${driver.color}; color: ${driver.color};">${driver.team}</span>
+                            
+                            <div class="team-container">
+                                <img src="${driver.logo}" class="team-logo" alt="${driver.team} logo">
+                                <span class="team-badge" style="border: 1px solid ${driver.color}; color: ${driver.color};">
+                                    ${driver.team}
+                                </span>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-back" style="border: 1px solid ${driver.color};">
+                    <div class="card-back" style="border: 2px solid ${driver.color};">
                         <h3>Did You Know?</h3>
                         <p>${driver.fact}</p>
-                        <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); width: 100%;">
                             <span class="stat-label">Team Principal</span>
                             <strong>${driver.principal}</strong>
                         </div>
@@ -119,11 +126,10 @@ function renderDrivers(driversToDisplay) {
         gridContainer.innerHTML += cardHTML;
     });
 
-    // RE-APPLY Tilt whenever the grid is redrawn
     applyTiltEffect();
 }
 
-// 2. Load initial drivers
+// 2. Load initial sorted list
 renderDrivers(drivers);
 
 // 3. Search Bar listener
